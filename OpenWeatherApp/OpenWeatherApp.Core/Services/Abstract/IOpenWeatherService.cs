@@ -5,6 +5,6 @@ namespace OpenWeatherApp.Core.Services
 {
     public interface IOpenWeatherService
     {
-        Task<WeatherSummary> GetOpenWeatherData(string cityName);
+        Task<WeatherSummary> GetWeather(string cityName);
     }
 }

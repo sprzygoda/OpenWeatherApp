@@ -23,7 +23,23 @@ namespace Blank.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel weatherDataLabel { get; set; }
+        UIKit.UILabel descriptionLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel errorLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView iconImage { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel temperatureLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel weatherForLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -37,9 +53,29 @@ namespace Blank.Views
                 cityNameEntry = null;
             }
 
-            if (weatherDataLabel != null) {
-                weatherDataLabel.Dispose ();
-                weatherDataLabel = null;
+            if (descriptionLabel != null) {
+                descriptionLabel.Dispose ();
+                descriptionLabel = null;
+            }
+
+            if (errorLabel != null) {
+                errorLabel.Dispose ();
+                errorLabel = null;
+            }
+
+            if (iconImage != null) {
+                iconImage.Dispose ();
+                iconImage = null;
+            }
+
+            if (temperatureLabel != null) {
+                temperatureLabel.Dispose ();
+                temperatureLabel = null;
+            }
+
+            if (weatherForLabel != null) {
+                weatherForLabel.Dispose ();
+                weatherForLabel = null;
             }
         }
     }

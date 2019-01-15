@@ -2,6 +2,7 @@
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Views;
 using OpenWeatherApp.Core.ViewModels;
+using OpenWeatherApp.iOS.Converters;
 using UIKit;
 
 namespace Blank.Views
@@ -27,8 +28,12 @@ namespace Blank.Views
             var set = this.CreateBindingSet<MainView, MainViewModel>();
 
             set.Bind(cityNameEntry).To(vm => vm.CityName);
-            set.Bind(weatherDataLabel).To(vm => vm.WeatherSummary.Weather[0].Description);
+            set.Bind(descriptionLabel).To(vm => vm.WeatherSummary.Description);
+            set.Bind(temperatureLabel).To(vm => vm.WeatherSummary.DisplayedTemperature);
             set.Bind(checkWeatherButton).To(vm => vm.CheckWeatherCommand);
+            set.Bind(weatherForLabel).To(vm => vm.WeatherSummary.DisplayedName);
+            set.Bind(iconImage).To(vm => vm.WeatherSummary.Icon).WithConversion(new UrlToImageConverter());
+            set.Bind(errorLabel).To(vm => vm.ErrorMessage);
 
             set.Apply();
         }

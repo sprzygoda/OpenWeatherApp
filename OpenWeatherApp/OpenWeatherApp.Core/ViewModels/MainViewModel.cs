@@ -2,6 +2,9 @@
 using MvvmCross.ViewModels;
 using OpenWeatherApp.Core.Models;
 using OpenWeatherApp.Core.Services;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace OpenWeatherApp.Core.ViewModels
@@ -17,11 +20,12 @@ namespace OpenWeatherApp.Core.ViewModels
             {
                 _checkWeatherCommand = _checkWeatherCommand ?? new MvxAsyncCommand(async () => 
                 {
-                    WeatherSummary = await _openWeatherService.GetOpenWeatherData(CityName);
+                    await ExecuteCheckWeatherCommand();
                 });
                 return _checkWeatherCommand;
             }
         }
+
 
         private string _cityName;
         public string CityName
@@ -30,6 +34,16 @@ namespace OpenWeatherApp.Core.ViewModels
             set
             {
                 SetProperty(ref _cityName, value);
+            }
+        }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                SetProperty(ref _errorMessage, value);
             }
         }
 
@@ -48,5 +62,24 @@ namespace OpenWeatherApp.Core.ViewModels
             _openWeatherService = openWeatherService;
         }
 
+        private async Task ExecuteCheckWeatherCommand()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(CityName))
+                {
+                    ErrorMessage = $"City name is empty.";
+                    return;
+                }
+                WeatherSummary = await _openWeatherService.GetWeather(CityName);
+                ErrorMessage = string.Empty;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                ErrorMessage = $"Could not find {CityName}";
+                return;
+            }
+        }
     }
 }
