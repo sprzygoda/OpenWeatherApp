@@ -7,10 +7,15 @@ namespace OpenWeatherApp.Core.Services
 {
     public class OpenWeatherService : IOpenWeatherService
     {
+        readonly IOpenWeatherAPIClient _openWeatherAPIClient;
+        public OpenWeatherService(IOpenWeatherAPIClient openWeatherAPIClient)
+        {
+            _openWeatherAPIClient = openWeatherAPIClient;
+        }
+
         public async Task<WeatherSummary> GetWeather(string cityName)
         {
-            OpenWeatherAPIClient client = new OpenWeatherAPIClient();
-            var result = await client.GetOpenWeatherData(cityName);
+            var result = await _openWeatherAPIClient.GetOpenWeatherData(cityName);
 
             return new WeatherSummary
             {

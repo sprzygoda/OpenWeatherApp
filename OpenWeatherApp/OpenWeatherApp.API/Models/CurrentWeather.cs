@@ -29,20 +29,5 @@ namespace OpenWeatherApp.API.Models
         [JsonProperty("name")]
         public string Name { get; set; } = string.Empty;
 
-
-        [JsonIgnore]
-        public string Icon => $"http://openweathermap.org/img/w/{Weather[0].Icon}.png";
-
-        [JsonIgnore]
-        public string DisplayedName => $"Weather for {Name}";
-
-        [JsonIgnore]
-        public string Main => Weather[0].Main;
-
-        [JsonIgnore]
-        public string Description => Weather[0].Description;
-
-        [JsonIgnore]
-        public string DisplayedTemperature => $"Temperature: {MainWeather.Temperature}℃";
     }
 }

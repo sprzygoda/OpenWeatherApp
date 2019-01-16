@@ -1,0 +1,40 @@
+{
+  "coord": {
+    "lon": 22,
+    "lat": 50.04
+  },
+  "weather": [
+    {
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 2,
+    "pressure": 1007,
+    "humidity": 93,
+    "temp_min": 2,
+    "temp_max": 2
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 6.7,
+    "deg": 260
+  },
+  "clouds": { "all": 75 },
+  "dt": 1547632800,
+  "sys": {
+    "type": 1,
+    "id": 1711,
+    "message": 0.0022,
+    "country": "PL",
+    "sunrise": 1547619837,
+    "sunset": 1547650802
+  },
+  "id": 759734,
+  "name": "Rzeszow",
+  "cod": 200
+}

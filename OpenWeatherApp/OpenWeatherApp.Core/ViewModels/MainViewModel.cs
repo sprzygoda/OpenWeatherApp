@@ -47,7 +47,7 @@ namespace OpenWeatherApp.Core.ViewModels
             }
         }
 
-        private WeatherSummary _weatherSummary;
+        private WeatherSummary _weatherSummary = new WeatherSummary();
         public WeatherSummary WeatherSummary
         {
             get => _weatherSummary;
@@ -62,7 +62,7 @@ namespace OpenWeatherApp.Core.ViewModels
             _openWeatherService = openWeatherService;
         }
 
-        private async Task ExecuteCheckWeatherCommand()
+        public async Task ExecuteCheckWeatherCommand()
         {
             try
             {

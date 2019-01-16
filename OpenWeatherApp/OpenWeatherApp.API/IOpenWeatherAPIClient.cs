@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenWeatherApp.API
 {
-    interface IOpenWeatherAPIClient
+    public interface IOpenWeatherAPIClient
     {
         Task<CurrentWeather> GetOpenWeatherData(string cityName);
     }

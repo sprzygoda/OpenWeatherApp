@@ -29,7 +29,21 @@ namespace OpenWeatherApp.Core.Models
         public string Description => Weather[0].Description;
 
         [JsonIgnore]
-        public string DisplayedTemperature => $"Temperature: {MainWeather.Temperature}℃";
+        public string DisplayedTemperature
+        {
+            get
+            {
+                if (double.IsNaN(MainWeather.Temperature))
+                {
+                    return "Temperature: ";
+                }
+                else
+                {
+                    return $"Temperature: {MainWeather.Temperature}℃";
+                }
+            }
+
+        }
     }
 }
 
