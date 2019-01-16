@@ -42,49 +42,34 @@
 		android:layout_marginLeft="20dp"
 		android:layout_marginRight="20dp"
 		android:layout_marginTop="60dp"/>
-	<GridLayout
+	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:rowCount="2"
-        android:columnCount="2">
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="match_parent"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			local:MvxBind="Text WeatherSummary.DisplayedTemperature"
-			android:gravity="center"
-			android:textSize="40dp"
-			android:layout_marginLeft="60dp"
-			android:layout_marginTop="20dp"
-			android:layout_row="0"
-            android:layout_columnSpan="2"/>
-		<ffimageloading.cross.MvxCachedImageView
-			android:layout_width="wrap_content"
-			android:layout_height="match_parent"
-			android:layout_marginRight="60dp"
-			android:layout_marginTop="20dp"
-			android:layout_gravity="center"
-			local:MvxBind="ImagePath WeatherSummary.Icon" 
-			android:layout_row="1"
-            android:layout_column="0"/>
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			local:MvxBind="Text WeatherSummary.Description"
-			android:gravity="center"
-			android:textSize="40dp"
-			android:layout_marginLeft="60dp"
-			android:layout_marginRight="60dp"
-			android:layout_marginTop="10dp"
-			android:layout_row="1"
-            android:layout_column="1"/>
-	</GridLayout>
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		local:MvxBind="Text WeatherSummary.DisplayedTemperature"
+		android:gravity="center"
+		android:textSize="40dp"
+		android:layout_marginTop="20dp"/>
+	<ffimageloading.cross.MvxCachedImageView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		android:layout_gravity="center"
+		local:MvxBind="ImagePath WeatherSummary.Icon"/>
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		local:MvxBind="Text WeatherSummary.Description"
+		android:gravity="center"
+		android:textSize="40dp"
+		android:layout_marginTop="10dp"/>
 	<TextView
 		android:text="Text"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
 		android:textAppearance="?android:attr/colorError"
+		android:textColor="@android:color/holo_red_dark"
 		local:MvxBind="Text ErrorMessage"/>
 </LinearLayout>

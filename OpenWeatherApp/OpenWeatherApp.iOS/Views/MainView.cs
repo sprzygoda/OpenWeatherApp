@@ -36,6 +36,18 @@ namespace Blank.Views
             set.Bind(errorLabel).To(vm => vm.ErrorMessage);
 
             set.Apply();
+
+            cityNameEntry.ShouldReturn = (textField) => {
+                cityNameEntry.ResignFirstResponder();
+                return true;
+            };
+
+            View.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                cityNameEntry.ResignFirstResponder();
+            }));
+
+
         }
 
         public override void ViewWillAppear(bool animated)
@@ -56,6 +68,11 @@ namespace Blank.Views
         public override void ViewDidDisappear(bool animated)
         {
             base.ViewDidDisappear(animated);
+        }
+
+        partial void CheckWeatherButton_TouchUpInside(UIButton sender)
+        {
+            cityNameEntry.ResignFirstResponder();
         }
 
 

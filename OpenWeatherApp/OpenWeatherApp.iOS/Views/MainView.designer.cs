@@ -41,6 +41,10 @@ namespace Blank.Views
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel weatherForLabel { get; set; }
 
+        [Action ("CheckWeatherButton_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void CheckWeatherButton_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (checkWeatherButton != null) {
