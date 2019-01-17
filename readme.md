@@ -1,4 +1,4 @@
-# openWeatherApp
+# OpenWeatherApp
 
 Mobile client for [OpenWeatherMap API](https://openweathermap.org/current "OpenWeatherMap API") created with [Xamarin](https://docs.microsoft.com/pl-pl/xamarin/ "Xamarin") and [MvvmCross](https://www.mvvmcross.com/ "MvvmCross")
 
