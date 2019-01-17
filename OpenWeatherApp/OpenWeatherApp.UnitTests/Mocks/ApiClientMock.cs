@@ -1,21 +1,22 @@
-﻿using Newtonsoft.Json;
-using OpenWeatherApp.API.Constants;
-using OpenWeatherApp.API.Models;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using OpenWeatherApp.API;
+using OpenWeatherApp.API.Models;
 using static Newtonsoft.Json.JsonConvert;
 
-namespace OpenWeatherApp.API
+namespace UnitTests.Mocks
 {
-    public class OpenWeatherAPIClient : IOpenWeatherAPIClient
+    public class ApiClientMock : IOpenWeatherAPIClient
     {
         public async Task<CurrentWeather> GetOpenWeatherData(string cityName)
         {
-            using (var client = new HttpClient())
+            using (var client = new HttpClient(new HttpMessageHandlerMock()) { BaseAddress = new Uri( "http://api.test.com")})
             {
-                var url = $"{ConnectionStrings.ApiUrl}{string.Format(ConnectionStrings.QueryParameters, cityName, "Metric", ConnectionStrings.API_KEY)}";
+                client.DefaultRequestHeaders.Add(cityName, "testCity");
 
-                var json = await client.GetStringAsync(url);
+                var json = await  client.GetStringAsync(client.BaseAddress);
 
                 if (string.IsNullOrWhiteSpace(json))
                     return null;

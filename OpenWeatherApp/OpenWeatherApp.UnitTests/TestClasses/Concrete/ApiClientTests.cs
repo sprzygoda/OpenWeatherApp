@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using UnitTests.Mocks;
+using UnitTests.TestData;
 using Xunit;
 
 namespace UnitTests.TestClasses
@@ -8,8 +9,8 @@ namespace UnitTests.TestClasses
     public class ApiClientTests
     {
         [Theory]
-        [InlineData(TestData.TestData.CORRECT_CITY_NAME)]
-        [InlineData(TestData.TestData.INCORRECT_CITY_NAME)]
+        [InlineData(TestDataValues.CORRECT_CITY_NAME)]
+        [InlineData(TestDataValues.INCORRECT_CITY_NAME)]
         [InlineData("")]
         public async Task Api_Client_Should_Give_Correct_Responses(string cityName)
         {
@@ -17,7 +18,7 @@ namespace UnitTests.TestClasses
             var client = new ApiClientMock();
 
             // Act & Assert
-            if(cityName.Equals(TestData.TestData.CORRECT_CITY_NAME))
+            if(cityName.Equals(TestDataValues.CORRECT_CITY_NAME))
             {
                 var response = await client.GetOpenWeatherData(cityName);
                 Assert.NotNull(response);

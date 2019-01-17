@@ -5,7 +5,7 @@ using System.IO;
 
 namespace UnitTests.TestData
 {
-    public class TestData
+    public static class TestDataValues
     {
         public const string CORRECT_CITY_NAME = "Rzeszow";
         public const string INCORRECT_CITY_NAME = "asdffff";

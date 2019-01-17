@@ -1,7 +1,7 @@
 ﻿using MvvmCross;
+using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using OpenWeatherApp.API;
-using OpenWeatherApp.Core.Services;
 using OpenWeatherApp.Core.ViewModels;
 
 namespace OpenWeatherApp.Core
@@ -10,7 +10,11 @@ namespace OpenWeatherApp.Core
     {
         public override void Initialize()
         {
-            Mvx.IoCProvider.RegisterType<IOpenWeatherService, OpenWeatherService>();
+            CreatableTypes()
+                .EndingWith("Service")
+                .AsInterfaces()
+                .RegisterAsLazySingleton();
+
             Mvx.IoCProvider.RegisterType<IOpenWeatherAPIClient, OpenWeatherAPIClient>();
             RegisterAppStart<MainViewModel>();
         }

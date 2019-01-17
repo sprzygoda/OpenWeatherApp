@@ -1,6 +1,8 @@
-﻿using OpenWeatherApp.Core.ViewModels;
+﻿using OpenWeatherApp.Core.Services;
+using OpenWeatherApp.Core.ViewModels;
 using System.Threading.Tasks;
 using UnitTests.Mocks;
+using UnitTests.TestData;
 using Xunit;
 
 namespace UnitTests.TestClasses
@@ -11,10 +13,10 @@ namespace UnitTests.TestClasses
         public async Task Check_Weather_Command_With_Correct_City_Name_Should_Provide_Weather_Summary()
         {
             // Arrange
-            var weatherService = new OpenWeatherMockService();
+            var weatherService = new OpenWeatherService(new ApiClientMock(), new MappingService());
             var mainViewModel = new MainViewModel(weatherService)
             {
-                CityName = TestData.TestData.CORRECT_CITY_NAME
+                CityName = TestDataValues.CORRECT_CITY_NAME
             };
 
             // Act
@@ -28,10 +30,10 @@ namespace UnitTests.TestClasses
         public async Task Check_Weather_Command_With_Correct_City_Name_Should_Set_Empty_Error_Message()
         {
             // Arrange
-            var weatherService = new OpenWeatherMockService();
+            var weatherService = new OpenWeatherService(new ApiClientMock(), new MappingService());
             var mainViewModel = new MainViewModel(weatherService)
             {
-                CityName = TestData.TestData.CORRECT_CITY_NAME,
+                CityName = TestDataValues.CORRECT_CITY_NAME,
                 ErrorMessage = "City name is empty"
             };
 
@@ -46,10 +48,10 @@ namespace UnitTests.TestClasses
         public async Task Check_Weather_Command_With_Incorrect_City_Name_Should_Return_COULD_NOT_FIND_Error_Message()
         {
             // Arrange
-            var weatherService = new OpenWeatherMockService();
+            var weatherService = new OpenWeatherService(new ApiClientMock(), new MappingService());
             var mainViewModel = new MainViewModel(weatherService)
             {
-                CityName = TestData.TestData.INCORRECT_CITY_NAME
+                CityName = TestDataValues.INCORRECT_CITY_NAME
             };
 
             // Act
@@ -63,7 +65,7 @@ namespace UnitTests.TestClasses
         public async Task Check_Weather_Command_With_Empty_City_Name_Should_Return_CITY_NAME_IS_EMPTY_Error_Message()
         {
             // Arrange
-            var weatherService = new OpenWeatherMockService();
+            var weatherService = new OpenWeatherService(new ApiClientMock(), new MappingService());
             var mainViewModel = new MainViewModel(weatherService)
             {
                 CityName = string.Empty

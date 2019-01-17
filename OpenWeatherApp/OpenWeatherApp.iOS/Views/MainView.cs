@@ -37,8 +37,10 @@ namespace Blank.Views
 
             set.Apply();
 
-            cityNameEntry.ShouldReturn = (textField) => {
+
+            cityNameEntry.ShouldReturn = (cityNameEntry) => {
                 cityNameEntry.ResignFirstResponder();
+                checkWeatherButton.SendActionForControlEvents(UIControlEvent.TouchUpInside);
                 return true;
             };
 
@@ -47,6 +49,7 @@ namespace Blank.Views
                 cityNameEntry.ResignFirstResponder();
             }));
 
+            cityNameEntry.BecomeFirstResponder();
 
         }
 

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using UnitTests.TestData;
 
 namespace UnitTests.Mocks
 {
@@ -9,11 +10,11 @@ namespace UnitTests.Mocks
     {
         protected override Task<HttpResponseMessage>SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if(request.Headers.Contains(TestData.TestData.CORRECT_CITY_NAME))
+            if(request.Headers.Contains(TestDataValues.CORRECT_CITY_NAME))
             return Task.FromResult(new HttpResponseMessage()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Content  = new StringContent(JsonConvert.SerializeObject(TestData.TestData.CorrectClientResponse))
+                Content  = new StringContent(JsonConvert.SerializeObject(TestDataValues.CorrectClientResponse))
             });
             else
             {

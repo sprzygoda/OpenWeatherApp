@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>OpenWeatherApp.UnitTests</AssemblyName>
+
+    <RootNamespace>OpenWeatherApp.UnitTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

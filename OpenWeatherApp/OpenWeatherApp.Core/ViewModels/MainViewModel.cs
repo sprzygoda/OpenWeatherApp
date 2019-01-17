@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using OpenWeatherApp.Core.Models;
+using OpenWeatherApp.Core.Resources;
 using OpenWeatherApp.Core.Services;
 using System;
 using System.Diagnostics;
@@ -25,7 +26,6 @@ namespace OpenWeatherApp.Core.ViewModels
                 return _checkWeatherCommand;
             }
         }
-
 
         private string _cityName;
         public string CityName
@@ -68,7 +68,7 @@ namespace OpenWeatherApp.Core.ViewModels
             {
                 if (string.IsNullOrWhiteSpace(CityName))
                 {
-                    ErrorMessage = $"City name is empty.";
+                    ErrorMessage = Messages.EmptyNameMessage;
                     return;
                 }
                 WeatherSummary = await _openWeatherService.GetWeather(CityName);
@@ -77,7 +77,7 @@ namespace OpenWeatherApp.Core.ViewModels
             catch (Exception e)
             {
                 Debug.WriteLine(e);
-                ErrorMessage = $"Could not find {CityName}";
+                ErrorMessage = string.Format(Messages.WrongNameMessage, CityName);
                 return;
             }
         }
