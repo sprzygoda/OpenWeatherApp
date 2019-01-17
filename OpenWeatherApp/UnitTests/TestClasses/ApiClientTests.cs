@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using UnitTests.Mocks;
 using Xunit;
@@ -13,12 +11,12 @@ namespace UnitTests.TestClasses
         [InlineData(TestData.TestData.CORRECT_CITY_NAME)]
         [InlineData(TestData.TestData.INCORRECT_CITY_NAME)]
         [InlineData("")]
-        public async Task Api_Client_Should_Give_Correct_Response(string cityName)
+        public async Task Api_Client_Should_Give_Correct_Responses(string cityName)
         {
             // Arrange
             var client = new ApiClientMock();
 
-            // Assert
+            // Act & Assert
             if(cityName.Equals(TestData.TestData.CORRECT_CITY_NAME))
             {
                 var response = await client.GetOpenWeatherData(cityName);
@@ -26,7 +24,7 @@ namespace UnitTests.TestClasses
             }
             else
             {
-                await Assert.ThrowsAnyAsync<Exception>(async () => { await client.GetOpenWeatherData(cityName); });
+                await Assert.ThrowsAnyAsync<Exception>(async () => await client.GetOpenWeatherData(cityName));
             }
         }
 

@@ -1,14 +1,14 @@
 ﻿using Newtonsoft.Json;
 using OpenWeatherApp.API.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace UnitTests.TestData
 {
     public class TestData
     {
+        public const string CORRECT_CITY_NAME = "Rzeszow";
+        public const string INCORRECT_CITY_NAME = "asdffff";
         public static CurrentWeather CorrectClientResponse
         {
             get
@@ -20,8 +20,6 @@ namespace UnitTests.TestData
                 return JsonConvert.DeserializeObject<CurrentWeather>(json);
             }
         }
-        public const string CORRECT_CITY_NAME = "Rzeszow";
-        public const string INCORRECT_CITY_NAME = "asdffff";
 
     }
 }

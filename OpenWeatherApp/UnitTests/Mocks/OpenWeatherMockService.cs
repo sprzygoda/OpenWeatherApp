@@ -1,8 +1,6 @@
 ﻿using OpenWeatherApp.Core.Models;
 using OpenWeatherApp.Core.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace UnitTests.Mocks
